@@ -6,13 +6,13 @@
 /*   By: esivre <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 12:16:51 by esivre            #+#    #+#             */
-/*   Updated: 2021/03/24 12:24:51 by esivre           ###   ########.fr       */
+/*   Updated: 2021/03/25 14:03:33 by esivre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-char	*ft_stdrup(char *src)
+char	*ft_strdup(char *src)
 {
 	int		i;
 	char	*ret;
