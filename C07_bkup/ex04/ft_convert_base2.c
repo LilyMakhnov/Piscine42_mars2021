@@ -6,7 +6,7 @@
 /*   By: esivre <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 07:31:25 by esivre            #+#    #+#             */
-/*   Updated: 2021/03/25 14:48:41 by esivre           ###   ########.fr       */
+/*   Updated: 2021/03/25 14:57:38 by esivre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,21 @@ unsigned int	ft_size_dest(int i, int size);
 char			*ft_putnbr_base(int nb, char *base, int size)
 {
 	unsigned int	i;
-	char			*dest;
-	unsigned int	size_dest;
+	char			*dest;;
 	unsigned int	n;
 
 	i = ft_size_dest(nb, size);
 	if (!(dest = malloc(sizeof(char) * (i + 1))))
 		return (NULL);
-	i = 0;
-	n = (nb < 0 ? -nb : nb)
-	i = size_dest
+	n = (nb < 0 ? -nb : nb);
+	dest[i] = '\0';	
 	while (i--)
 	{
-		dest[size_dest - i] = base[n % size];
+		dest[i] = base[n % size];
 		n /= size;
 	}	
 	if (nb < 0)
 		dest[0] = '-';
-	dest[size_dest] = 0;
 	return (dest);
 }
 
