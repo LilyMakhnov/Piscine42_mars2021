@@ -10,37 +10,31 @@ int		is_in(char a, char *charset);
 void	ft_copy(char *dest, int *i, char *str, char *charset)
 {
 	int j;
-	int p;
 
-	p = *i;
 	j = 0;
-	while (is_in(str[p], charset) == 1 && str[p])
-		p++;
-	while (is_in(str[p], charset) == 0 && str[p])
+	while (is_in(str[*i], charset) == 1 && str[*i])
+		(*i)++;
+	while (is_in(str[*i], charset) == 0 && str[*i])
 	{
-		dest[j] = str[p];
-		p++;
+		dest[j] = str[*i];
+		(*i)++;
 		j++;
 	}
-	*i = p;
 	dest[j] = 0;
 }
 
 int		sizeword(int *i, char *str, char *charset)
 {
 	int j;
-	int p;
 
-	p = *i;
 	j = 0;
-	while (is_in(str[p], charset) == 1 && str[p])
-		p++;
-	while (is_in(str[p], charset) == 0 && str[p])
+	while (is_in(str[*i], charset) == 1 && str[*i])
+		(*i)++;
+	while (is_in(str[*i], charset) == 0 && str[*i])
 	{
-		p++;
+		(*i)++;
 		j++;
 	}
-	*i = p;
 	return j;
 }
 
@@ -70,7 +64,6 @@ char	**ft_split(char *str, char *charset)
 		ft_copy(dest[i++], &pos, str, charset);		
 	dest[size] = 0;
 	return dest;
-//	return NULL;
 }
 
 int		is_in(char a, char *charset)
@@ -93,10 +86,10 @@ int		count_word(char *str, char *charset)
 	int isword;
 	int countword;
 
-	i = 0;
+	i = -1;
 	isword = 0;
 	countword = 0;
-	while (str[i++])
+	while (str[++i])
 	{
 		if (is_in(str[i], charset) == 0 && isword == 0)
 		{
@@ -118,7 +111,7 @@ int main()
 	int i;
 
 	i = 0;
-	tab = ft_split("salut ca va biem", "");
+	tab = ft_split("saluwerjni niliu iuhawev wevaqsajnlt ca va biem", "a ");
 	while (tab[i])
 		printf("%s\n", tab[i++]);
 //	printf("%d", count_word(" salut ca va bien", " "));
