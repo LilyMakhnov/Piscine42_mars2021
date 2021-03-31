@@ -6,7 +6,7 @@
 /*   By: esivre <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 07:52:28 by esivre            #+#    #+#             */
-/*   Updated: 2021/03/23 09:38:52 by esivre           ###   ########.fr       */
+/*   Updated: 2021/03/28 14:09:20 by esivre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ void	ft_show_tab(struct s_stock_str *par)
 {
 	while (par->str)
 	{
+		ft_putchar(par->str);
 		ft_putnbr(par->size);
 		write(1, "\n", 1);
-		ft_putchar(par->str);
 		ft_putchar(par->copy);
 		par++;
 	}

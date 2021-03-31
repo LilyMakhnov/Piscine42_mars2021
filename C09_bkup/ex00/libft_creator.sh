@@ -1,2 +1,4 @@
 gcc -Wall -Wextra -Werror -c *.c
-ar -rcs libft.a *.o 
+ar rc libft.a *.o 
+rm -f *.o
+ranlib libft.a
