@@ -1,0 +1,102 @@
+#include <unistd.h>
+#include <fcntl.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
+int count_line(fd)
+{
+	char buf[2];
+	int nbline;
+	int i;
+	int fd;
+
+	fd = open("numbers.dict", O_RDONLY);
+	if (fd == -1)
+		return (0);
+	nbline = 0;
+	i = 1;
+	while (i != 0)
+	{
+		i = read(fd, buf, 1 );
+		if (buf[0] == '\n')
+			nbline++;
+	}
+	cd = close (fd);
+	if (cd == -1)
+		return (0);
+	return (nbline - 1);
+}
+
+int	malloc_line(int fd, char **tab)
+{
+	int i;
+	int j;
+	char buf[2];
+
+	i = 0;
+	j = 0;
+	while (i != 0)
+	{
+		i = read(fd, buf, 1);
+		if (buf[0] == '\n' && i != 0)
+		{
+			tab[i] = malloc(sizeof(char) * (j + 1));
+			if (!tab[i])
+				return (0);
+			j = 0;
+		}
+		else
+			j++;
+	}
+	return (1);
+}
+
+void	fill_tab(int fd, char **tab )
+{
+	int i;
+	int j;
+	int k;
+
+	i = 1;
+	j = 0;
+	while (i != 0)
+	{
+
+		while (tab[j][k] != '\n' && i != 0)
+		{
+			i = read(fd, tab[j][k], 1);
+			k++;
+		}
+		if (i != 0)
+			tab[j][k] = '\0';
+		j++;
+	}
+}
+
+char **dict_tab(int *nbline)
+{
+	char **tab;
+	int fd;
+
+	*nbline = count_line();
+	if (*nbline == 0)
+		return (NULL);
+	if (!(tab = malloc(sizeof(char*) * (nbline + 1))))
+		return (NULL);
+	fd = open("numbers.dict", O_RDONLY);
+	if (fd == -1)
+		return (NULL);
+	if (!malloc_line(tab))
+		return (NULL);
+	if (close (fd) == -1)
+		return (NULL)
+	fd = open("numbers.dict", O_RDONLY);
+	if (fd == -1)
+		return (NULL);
+	fill_tab(fd, tab);
+	tab[nbline - 1] = 0;
+	if (close(fd) == -1)
+		return (NULL);
+	return (tab);
+}
